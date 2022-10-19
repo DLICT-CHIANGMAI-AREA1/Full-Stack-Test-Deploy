@@ -3,8 +3,7 @@ const Schema = mongoose.Schema
 const Data = require("../src/data.json");
 
 const pdf = new Schema({
-    namecsv:String,
-    namejson:String
+    name:String
 })
 
 const PDF = mongoose.model("pdfs", pdf)
