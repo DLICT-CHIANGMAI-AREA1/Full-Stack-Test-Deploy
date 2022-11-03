@@ -1,8 +1,10 @@
 const router = require("express").Router()
-const {getData,getPDF} = require("../controller/admin.controller");
+const {CreatePDF,getMessageFormat,FindOP} = require("../controller/admin.controller");
+const upload = require('../middleware/upload')
 
-router.get('/getDataNew',getData)
-router.get('/getPDF',getPDF)
+router.post('/api/CreatePDF',upload.single('file'),CreatePDF)
+router.get('/api/FindPDF',FindOP)
+router.get('/api/getMessage',getMessageFormat)
 
 
 module.exports = router
