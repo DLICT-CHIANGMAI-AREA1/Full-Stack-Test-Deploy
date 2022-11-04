@@ -5,7 +5,7 @@ const upload = require('../middleware/upload')
 router.post('/api/CreatePDF',upload.single('file'),CreatePDF)
 router.get('/api/FindPDF',FindOP)
 router.put('/api/UpdatePDF_OPM/:id',upload.single('file'),UpdateOPM)
-router.delete('/api/UpdatePDF_OPM/:id',DeleteOPM)
+router.delete('/api/Delete/:id',DeleteOPM)
 
 
 

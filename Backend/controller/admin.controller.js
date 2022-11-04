@@ -24,6 +24,7 @@ module.exports = {
     },
     UpdateOPM: async (req, res, next) => {
         try {
+            console.log('hello')
             const { id } = req.params;
             const { filename} = req.body;
             if (req.file) {
@@ -32,8 +33,8 @@ module.exports = {
                     file:  req.file.path,
                 };
                 console.log(data);
-                let update =await OP.findByIdAndUpdate(id , data, {new: true});
-                return res.status(200).json(update);
+                /*let update =await OP.findByIdAndUpdate(id , data, {new: true});
+                return res.status(200).json(update);*/
             }
 
         } catch (error) {
