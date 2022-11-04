@@ -13,7 +13,7 @@ module.exports = {
 
             PDF.save()
                 .then((response) => {
-                    return res.status(200).json(response)
+                    return res.status(200).json(response);
                 })
                 .catch((error) => {
                     return res.status(500).json(error.message);
@@ -24,19 +24,16 @@ module.exports = {
     },
     UpdateOPM: async (req, res, next) => {
         try {
-            console.log('hello')
             const { id } = req.params;
-            const { filename} = req.body;
-            if (req.file) {
-                const data = {
-                    filename: filename,
-                    file:  req.file.path,
-                };
-                console.log(data);
-                /*let update =await OP.findByIdAndUpdate(id , data, {new: true});
-                return res.status(200).json(update);*/
-            }
+            const { filename, file } = req.body;
 
+            const data = {
+                filename: filename,
+                file: file,
+            };
+            console.log(data)
+            let update = await OP.findByIdAndUpdate(id, data, { new: true })
+            return res.status(200).json(update);
         } catch (error) {
             return res.status(500).json(error.message);
         }
@@ -52,9 +49,9 @@ module.exports = {
         try {
             const { id } = req.params;
             await OP.findByIdAndDelete(id);
-          return res.status(200).json(await OP.find());
-        }catch (error) {
+            return res.status(200).json(await OP.find());
+        } catch (error) {
             return res.status(500).json(error.message);
         }
-    }
+    },
 };
