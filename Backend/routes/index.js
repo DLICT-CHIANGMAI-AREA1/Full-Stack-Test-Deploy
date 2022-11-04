@@ -1,11 +1,7 @@
-const router = require("express").Router()
+const router = require("express").Router();
 
-const admin = require("./admin")
+const opm = require("./opm");
 
+router.use("/admin", opm);
 
-
-router.use("/admin",admin)
-
-
-
-module.exports = router
+module.exports = router;

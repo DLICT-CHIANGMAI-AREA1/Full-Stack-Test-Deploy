@@ -10,23 +10,34 @@ module.exports = {
             if (req.file) {
                 PDF.file = req.file.path;
             }
+
             PDF.save()
                 .then((response) => {
-                    res.json({ message: "Add Success" });
+                    return res.status(200).json(response)
                 })
-                .catch((err) => {
-                    res.json({ message: "An error Occured" });
+                .catch((error) => {
+                    return res.status(500).json(error.message);
                 });
         } catch (error) {
             res.json({ message: error.message });
         }
     },
-    getMessageFormat: async (req, res, next) => {
+    UpdateOPM: async (req, res, next) => {
         try {
-            res.send("こんにちは　GetPDFPath です");
-            //res.status(200).json(await Book.find());
+            const { id } = req.params;
+            const { filename} = req.body;
+            if (req.file) {
+                const data = {
+                    filename: filename,
+                    file:  req.file.path,
+                };
+                console.log(data);
+                let update =await OP.findByIdAndUpdate(id , data, {new: true});
+                return res.status(200).json(update);
+            }
+
         } catch (error) {
-            res.status(500).json(error);
+            return res.status(500).json(error.message);
         }
     },
     FindOP: async (req, res, next) => {
@@ -36,4 +47,13 @@ module.exports = {
             res.status(500).json(error);
         }
     },
+    DeleteOPM: async (req, res, next) => {
+        try {
+            const { id } = req.params;
+            await OP.findByIdAndDelete(id);
+          return res.status(200).json(await OP.find());
+        }catch (error) {
+            return res.status(500).json(error.message);
+        }
+    }
 };
