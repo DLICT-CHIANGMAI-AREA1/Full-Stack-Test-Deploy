@@ -10,6 +10,7 @@ module.exports = {
             if (req.file) {
                 PDF.file = req.file.path;
             }
+            console.log(req.file.path);
 
             PDF.save()
                 .then((response) => {
@@ -25,14 +26,11 @@ module.exports = {
     UpdateOPM: async (req, res, next) => {
         try {
             const { id } = req.params;
-            const { filename, file } = req.body;
-
             const data = {
-                filename: filename,
-                file: file,
+                filename: req.filename,
+                file: req.file.path,
             };
-            console.log(data)
-            let update = await OP.findByIdAndUpdate(id, data, { new: true })
+            let update = await OP.findByIdAndUpdate(id, data, { new: true });
             return res.status(200).json(update);
         } catch (error) {
             return res.status(500).json(error.message);
