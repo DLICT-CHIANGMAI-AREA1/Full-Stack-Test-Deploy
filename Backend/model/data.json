@@ -1,0 +1,29 @@
+[
+    {
+        "name_year": "ปีการศึกษา-ภาคเรียน 2565-1",
+        "data": [
+            {
+                "name": "นักเรียนทั้งหมด  2565-1",
+                "url": "https://app.powerbi.com/view?r=eyJrIjoiOWQyYTUzYTktYmYyNi00N2MzLTljMWItYjM4ZGNmMTQ0YWIyIiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D&pageName=ReportSection"
+            },
+            {
+                "name": "จำเเนกตามเพศ  2565-1",
+                "url": "https://app.powerbi.com/view?r=eyJrIjoiOWQyYTUzYTktYmYyNi00N2MzLTljMWItYjM4ZGNmMTQ0YWIyIiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D&pageName=ReportSection"
+            }
+        ]
+    },
+    {
+        "name_year": "ปีการศึกษา-ภาคเรียน 2565-2",
+        "data": [
+            {
+                "name": "นักเรียนทั้งหมด  2565-2",
+                "url": "https://app.powerbi.com/view?r=eyJrIjoiOWQyYTUzYTktYmYyNi00N2MzLTljMWItYjM4ZGNmMTQ0YWIyIiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D&pageName=ReportSection"
+            },
+            {
+                "name": "จำเเนกตามเพศ 2565-2",
+                "url": "https://app.powerbi.com/view?r=eyJrIjoiOWQyYTUzYTktYmYyNi00N2MzLTljMWItYjM4ZGNmMTQ0YWIyIiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D&pageName=ReportSection"
+            }
+        ]
+    }
+    
+]
