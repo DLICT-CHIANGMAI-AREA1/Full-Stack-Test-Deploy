@@ -1,21 +1,27 @@
 const mongoose = require("../config/database");
-const Schema = mongoose.Schema
-const data = require("../model/data.json")
+const Schema = mongoose.Schema;
+const mock = require("../model/mock.json");
 
-const DataStudent_Each_Year = new Schema({
-    name_year:String,
-    data:[{
-        name:String,
-        url:String,
-    }],
-})
+const Data_Each_Year = new Schema({
+    name_year: String,
+    data: [
+        {
+            name_data: String,
+            date: [
+                {
+                    name_date: String,
+                    data: [{ name: String, url: String }],
+                },
+            ],
+        },
+    ],
+});
 
-const DataStudent = mongoose.model(" DataStudent_Each_Years",  DataStudent_Each_Year)
+const DataEachYear = mongoose.model(" Data_Each_Year", Data_Each_Year);
 
 const SaveDataStudent = async () => {
-	if (0 == (await DataStudent.find())) await DataStudent.insertMany(data);
-   
+    if (0 == (await DataEachYear.find())) await DataEachYear.insertMany(mock);
 };
 SaveDataStudent();
 
-module.exports = DataStudent
+module.exports = DataEachYear;
