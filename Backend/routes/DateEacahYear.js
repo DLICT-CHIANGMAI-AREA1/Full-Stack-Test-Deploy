@@ -1,12 +1,19 @@
 const router = require("express").Router()
-const {FindDataEachYear,FindDataEachYearById,FindDataEachYearByDate,DeleteDataDate,DeleteDataYear,UpdateData,DeleteData,AddSemester,DeleteDataRecordDate} = require("../controller/DataEachYear.controller");
+const {FindDataEachYear,FindDataEachYearById,FindDataEachYearByDate,DeleteDataDate,DeleteDataYear,CreateDataYear,CreateDataName,CreateDate,CreateData,UpdateData,DeleteData,DeleteDataRecordDate} = require("../controller/DataEachYear.controller");
 
 //router.post('/api/AddSemester',AddSemester)
 router.get('/api/FindDataEachYear',FindDataEachYear)
 router.get('/api/FindDataEachYearById/:id',FindDataEachYearById)
 router.get('/api/FindDataEachYearByDate/:param1/:param2',FindDataEachYearByDate)
-//router.post('/api/AddData/:id',AddData)
-//router.put('/api/UpdateData/:id/:ids',UpdateData)
+
+
+router.post('/api/CreateDataYear',CreateDataYear)
+router.post('/api/CreateDataName/:param',CreateDataName)
+router.post('/api/CreateDate/:param/:param2',CreateDate)
+router.post('/api/CreateData/:param/:param2/:param3',CreateData)
+
+router.put('/api/UpdateData/:param/:param2/:param3',UpdateData)
+
 router.delete('/api/DeleteData/:param1/:param2/:param3/:id',DeleteData)
 router.delete('/api/DeleteDataDate/:param1/:id',DeleteDataDate)
 router.delete('/api/DeleteDataYear/:id',DeleteDataYear)

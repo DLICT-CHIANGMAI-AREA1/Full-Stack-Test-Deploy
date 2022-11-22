@@ -1,6 +1,7 @@
 const DataEachYear = require("../model/DataStudentEachYear");
 
 module.exports = {
+    /*-----------------------Find----------------------------*/
     FindDataEachYear: async (req, res, next) => {
         try {
             return res.status(200).json(await DataEachYear.find());
@@ -31,55 +32,36 @@ module.exports = {
             return res.status(500).json(error.message);
         }
     },
-    /*
-    AddData: async (req, res, next) => {
-        try {
-            const { id } = req.params;
-            const data = req.body;
-            return res.status(200).json(
-                await DataStudent.updateOne(
-                    { _id: id },
-                    {
-                        $push: { data },
-                    },
-                    { safe: true }
-                )
-            );
-        } catch (error) {
-            return res.status(500).json(error.message);
-        }
-    },
+
+    /*-----------------------Update----------------------------*/
     UpdateData: async (req, res, next) => {
         try {
-            const { id, ids } = req.params;
-            return res.status(200).json(
-                await DataStudent.updateOne(
-                    { _id: id, "data._id": ids },
-                    {
-                        $set: {
-                            "data.$.name": req.body.name,
-                            "data.$.url": req.body.url,
-                        },
+            const { param, param2, param3 } = req.params;
+            const data = req.body;
+            console.log(param, param2, param3, data);
+            await DataEachYear.updateOne(
+                { _id: param, "data.date._id": param3 },
+                {
+                    $set: {
+                        "data.$[].date.$[].data.$[elem].name": req.body.name,
+                        "data.$[].date.$[].data.$[elem].url": req.body.url,
                     },
-                    { safe: true }
-                )
+                },
+                {
+                    arrayFilters: [
+                        {
+                            "elem._id": param2,
+                        },
+                    ],
+                    multi: true,
+                }
             );
         } catch (error) {
             return res.status(500).json(error.message);
         }
     },
-    AddSemester: async (req, res, next) => {
-        try {
-            const data = req.body;
-            let SaveData = new DataStudent(data);
-            await SaveData.save(async (err, data) => {
-                if (err) return res.status(400).json("Bad Request");
-                return res.status(200).json(data);
-            });
-        } catch (error) {
-            return res.status(500).json(error.message);
-        }
-    },*/
+
+    /*-----------------------Delete----------------------------*/
     DeleteData: async (req, res, next) => {
         try {
             const { param1, id } = req.params;
@@ -141,5 +123,94 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error.message);
         }
-    }
+    },
+
+    /*-----------------------Create----------------------------*/
+    CreateDataYear: async (req, res, next) => {
+        try {
+            try {
+                const data = req.body;
+                let SaveData = new DataEachYear(data);
+                await SaveData.save(async (err, data) => {
+                    if (err) return res.status(400).json("Bad Request");
+                    return res.status(200).json(data);
+                });
+            } catch (error) {
+                return res.status(500).json(error.message);
+            }
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    },
+    CreateDataName: async (req, res, next) => {
+        try {
+            try {
+                const { param } = req.params;
+                const data = req.body;
+                return res.status(200).json(
+                    await DataEachYear.updateOne(
+                        { _id: param },
+                        {
+                            $push: { data },
+                        },
+                        { safe: true }
+                    )
+                );
+            } catch (error) {
+                return res.status(500).json(error.message);
+            }
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    },
+    CreateDate: async (req, res, next) => {
+        try {
+            try {
+                const { param, param2 } = req.params;
+                const data = req.body;
+                console.log(param, param2, data);
+                return res.status(200).json(
+                    await DataEachYear.updateOne(
+                        { _id: param, "data._id": param2 }, // สร้าง เวลา
+                        {
+                            $push: { "data.$.date": { name_date: req.body.name_date, data: [] } },
+                        }
+                    )
+                );
+            } catch (error) {
+                return res.status(500).json(error.message);
+            }
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    },
+    CreateData: async function (req, res, next) {
+        try {
+            try {
+                const { param, param2, param3 } = req.params;
+                const data = req.body;
+                console.log(param, param2, param3, data);
+                return res.status(200).json(
+                    await DataEachYear.updateOne(
+                        { _id: param, "data.date._id": param3 },
+                        {
+                            $push: { "data.$.date.$[elem].data": { name: req.body.name, url: req.body.url } },
+                        },
+                        {
+                            arrayFilters: [
+                                {
+                                    "elem._id": param3,
+                                },
+                            ],
+                            multi: true,
+                        }
+                    )
+                );
+            } catch (error) {
+                return res.status(500).json(error.message);
+            }
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    },
 };
