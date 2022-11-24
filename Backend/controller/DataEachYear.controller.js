@@ -37,24 +37,27 @@ module.exports = {
     UpdateData: async (req, res, next) => {
         try {
             const { param, param2, param3 } = req.params;
-            const data = req.body;
-            console.log(param, param2, param3, data);
-            await DataEachYear.updateOne(
-                { _id: param, "data.date._id": param3 },
-                {
-                    $set: {
-                        "data.$[].date.$[].data.$[elem].name": req.body.name,
-                        "data.$[].date.$[].data.$[elem].url": req.body.url,
-                    },
-                },
-                {
-                    arrayFilters: [
-                        {
-                            "elem._id": param2,
+        
+            return res.status(200).json(
+                await DataEachYear.updateOne(
+                    { _id: param, "data.date._id": param3 },
+                    {
+                        $set: {
+                            "data.$[].date.$[].data.$[elem].name": req.body.name,
+                            "data.$[].date.$[].data.$[elem].url": req.body.url,
+                            "data.$[].date.$[].data.$[elem].csv_url": req.body.csv_url,
+                            "data.$[].date.$[].data.$[elem].image": req.file.path,
                         },
-                    ],
-                    multi: true,
-                }
+                    },
+                    {
+                        arrayFilters: [
+                            {
+                                "elem._id": param2,
+                            },
+                        ],
+                        multi: true,
+                    }
+                )
             );
         } catch (error) {
             return res.status(500).json(error.message);
@@ -168,7 +171,6 @@ module.exports = {
             try {
                 const { param, param2 } = req.params;
                 const data = req.body;
-                console.log(param, param2, data);
                 return res.status(200).json(
                     await DataEachYear.updateOne(
                         { _id: param, "data._id": param2 }, // สร้าง เวลา
@@ -188,13 +190,19 @@ module.exports = {
         try {
             try {
                 const { param, param2, param3 } = req.params;
-                const data = req.body;
-                console.log(param, param2, param3, data);
+                const { name, url, csv_url } = req.body;
                 return res.status(200).json(
                     await DataEachYear.updateOne(
                         { _id: param, "data.date._id": param3 },
                         {
-                            $push: { "data.$.date.$[elem].data": { name: req.body.name, url: req.body.url } },
+                            $push: {
+                                "data.$.date.$[elem].data": {
+                                    name: name,
+                                    url: url,
+                                    csv_url: csv_url,
+                                    image: req.file.path,
+                                },
+                            },
                         },
                         {
                             arrayFilters: [
