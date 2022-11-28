@@ -1,5 +1,4 @@
 const OP = require("../model/Operating_Manual");
-const axios = require("axios");
 
 module.exports = {
     CreatePDF: async (req, res, next) => {

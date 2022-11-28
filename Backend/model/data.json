@@ -15,11 +15,11 @@
                 "url": "https://app.powerbi.com/view?r=eyJrIjoiYjAxZDMwNzAtMzEwZC00NmE5LWEwZWYtOWFjMDVmZjkzODQwIiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D"
             },
             {
-                "name": "จำนวนนักเรียนที่อยู่ห่างเกิน 3 กม.จำแนกตามการเดินทาง",
+                "name": " จำนวนนักเรียนด้อยโอกาส",
                 "url": "https://app.powerbi.com/view?r=eyJrIjoiYmQ0Mjk2MjYtMWQ5OS00YmM2LWJmNWUtYWIxZGI0N2VjYTNhIiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D"
             },
             {
-                "name": "จำนวนนักเรียนด้อยโอกาส",
+                "name": "จำนวนนักเรียนที่อยู่ห่างเกิน 3 กม.จำแนกตามการเดินทาง",
                 "url": "https://app.powerbi.com/view?r=eyJrIjoiY2JjYTQxNTItOWViNi00N2FiLWIwZmUtNGE4YTU2OWQ2MzM4IiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D"
             },
             {
@@ -51,7 +51,7 @@
                 "url": "https://app.powerbi.com/view?r=eyJrIjoiNDk3OGZmNDgtNDRmZC00ODMzLTg1OTktZjU3Njk5OTkyMGYyIiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D"
             },
             {
-                "name": "จำนวนนักเรียจำนวนโรงเรียนที่มีไฟฟ้า/ไม่มีไฟฟ้าพิการ",
+                "name": "จำนวนนักเรียจำนวนโรงเรียนที่มีไฟฟ้า/ไม่มีไฟฟ้า",
                 "url": "https://app.powerbi.com/view?r=eyJrIjoiMDY2ZDhiOWItMWRhYy00NmJiLThmMzYtYTQ2Y2I2ZWEwNjBiIiwidCI6ImNmODFmMWRmLWRlNTktNGMyOS05MWRhLWEyZGZkMDRhYTc1MSIsImMiOjEwfQ%3D%3D"
             },
             {
