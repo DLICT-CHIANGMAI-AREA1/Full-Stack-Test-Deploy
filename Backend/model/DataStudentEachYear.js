@@ -1,6 +1,6 @@
 const mongoose = require("../config/database");
 const Schema = mongoose.Schema;
-const mock = require("../model/mock.json");
+const mock = require("../model/JSON/mock.json");
 
 const Data_Each_Year = new Schema({
     name_year: String,

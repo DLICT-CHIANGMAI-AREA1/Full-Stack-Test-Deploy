@@ -1,6 +1,6 @@
 const mongoose = require("../config/database");
 const Schema = mongoose.Schema;
-const person = require("../model/person.json");
+const person = require("../model/JSON/person.json");
 
 const Person = new Schema({
     First_name: String,
