@@ -24,6 +24,7 @@ module.exports = {
     },
     UpdateOPM: async (req, res, next) => {
         try {
+            console.log(req.filename)
             const { id } = req.params;
             const data = {
                 filename: req.filename,
