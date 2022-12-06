@@ -12,7 +12,7 @@ router.use("/admin", DataEachYear);
 router.use("/admin", Person);
 router.use("/admin", Video);
 router.use("/admin", Mission);
-router.use("/admin");
+
 
 
 module.exports = router;
